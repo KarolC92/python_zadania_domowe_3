@@ -15,33 +15,38 @@ Przetestuj swoje rozwiązanie i napisz testy, w których:
 - zwiększysz prędkość pociągu o 8 km/h i wypisze jego opis
 - zwiększysz prędkość pociągu o 10 km/h i wypisze jego opis"""
 
+
 class Pociag:
-    PREDKOSC = 10
-    ILOSC_PALIWA = 1000
+    def __init__(self, predkosc = 10, ilosc_paliwa = 1000):
+        self.predkosc = predkosc
+        self.ilosc_paliwa = ilosc_paliwa
 
     def przyspiesz(self, o_ile):
-        self.nowa_predkosc = self.PREDKOSC + o_ile
-        self.nowa_ilosc_paliwa = self.ILOSC_PALIWA - o_ile * (self.PREDKOSC / 100)
+        nowa_ilosc_paliwa = self.ilosc_paliwa - o_ile * (self.predkosc / 100)
 
-        if o_ile > 0.75 * self.PREDKOSC or self.nowa_ilosc_paliwa <= 0:
-            self.nowa_predkosc = self.PREDKOSC
-        else:
-            self.PREDKOSC += o_ile
-            self.ILOSC_PALIWA = self.nowa_ilosc_paliwa
+        if o_ile < 0.75 * self.predkosc and nowa_ilosc_paliwa >= 0:
+            self.predkosc += o_ile
+            self.ilosc_paliwa = nowa_ilosc_paliwa
 
     def opis(self):
-        return f'Moja prędkość to {self.PREDKOSC} km/h. Mam jeszcze {self.ILOSC_PALIWA} litrów paliwa.'
+        return f'Moja prędkość to {self.predkosc} km/h. Mam jeszcze {self.ilosc_paliwa} litrów paliwa.'
 
     def __str__(self):
         return f'{self.opis()}'
 
-t = Pociag()
-t.przyspiesz(5)
-print(t)
-t.przyspiesz(20)
-print(t)
-t.przyspiesz(8)
-print(t)
-t.przyspiesz(10)
-print(t)
+def test_1():
+    t = Pociag()
+    t.przyspiesz(10)
+    assert t.predkosc == 10
 
+
+if __name__ == '__main__':
+    t = Pociag()
+    t.przyspiesz(5)
+    print(t)
+    t.przyspiesz(20)
+    print(t)
+    t.przyspiesz(8)
+    print(t)
+    t.przyspiesz(10)
+    print(t)
