@@ -39,52 +39,25 @@ class PlanszaXO:
         else:
             raise ValueError(f'ValueError')
 
+    def sprawdz_rzedy(self, p, z):
+        return any([{z} == set(p[i]) for i in range(3)])
+
+    def sprawdz_skosy(self, z):
+        return {z} == set(self.plansza[i][i] for i in range(3)) or {z} == set(self.plansza[i][2-i] for i in range(3))
+
+    def obroc_plansze(self):
+        return [[self.plansza[i][j] for i in range(3)] for j in range(3)]
+
     def stan_gry(self):
+        if self.sprawdz_rzedy(self.plansza, 'X') or self.sprawdz_rzedy(self.obroc_plansze(), 'X') or self.sprawdz_skosy('X'):
+            return 'krzyżyki wygrywają'
+        if self.sprawdz_rzedy(self.plansza, 'O') or self.sprawdz_rzedy(self.obroc_plansze(), 'O') or self.sprawdz_skosy('O'):
+            return 'kółka wygrywają'
+        if any('' in self.plansza[i] for i in range(3)):
+            return 'Gra trwa'
+        else:
+            return 'Remis'
 
-        stan_1 = f'krzyżyki wygrywają'
-        stan_2 = f'kółka wygrywają'
-        stan_3 = f'Gra trwa'
-        licz_skos_x = 0
-        licz_skos_o = 0
-        licz_poziom_x = 0
-        licz_poziom_o = 0
-        licz_pion_x = 0
-        licz_pion_o = 0
-
-        for i in range(3):
-            for j in range(3):
-                if i == j:
-                    if self.plansza[i][j] == 'X':
-                        licz_skos_x += 1
-                        if licz_skos_x == 3:
-                            return stan_1
-                    elif self.plansza[i][j] == 'O':
-                        licz_skos_o += 1
-                        if licz_skos_o == 3:
-                            return stan_2
-                if self.plansza[i][j] == 'X':
-                    licz_poziom_x += 1
-                    if licz_poziom_x == 3:
-                        return stan_1
-                if self.plansza[i][j] == 'O':
-                    licz_poziom_o += 0
-                    if licz_poziom_o == 3:
-                        return stan_2
-                if self.plansza[j][i] == 'X':
-                    licz_pion_x += 1
-                    if licz_pion_x == 3:
-                        return stan_1
-                if self.plansza[j][i] == 'O':
-                    licz_pion_o += 1
-                    if licz_pion_o == 3:
-                        return stan_2
-
-            licz_poziom_x = 0
-            licz_poziom_o = 0
-            licz_pion_x = 0
-            licz_pion_o = 0
-
-        return stan_3
 
     def czyj_ruch(self):
         ruch = ['X', 'O']
