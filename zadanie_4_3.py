@@ -44,3 +44,4 @@ t.przyspiesz(8)
 print(t)
 t.przyspiesz(10)
 print(t)
+
