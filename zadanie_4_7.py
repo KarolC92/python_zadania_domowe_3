@@ -30,6 +30,7 @@ class Advertisement:
                f'Price: {self.price}\n' \
                f'Seller: {self.seller}'
 
+
 class OgloszenieSamochodowe(Advertisement):
     def __init__(self, title, description, price, seller: ContactDetails, model, marka, rok_produkcji, przebieg, pojemnosc, moc, rodzaj_paliwa):
         super().__init__(title, description, price, seller)
@@ -42,9 +43,10 @@ class OgloszenieSamochodowe(Advertisement):
         self.rodzaj_paliwa = rodzaj_paliwa
 
     def __str__(self):
-        return f'{self.title}, {self.description}, {self.price}, {self.seller}\n' \
+        return super().__str__() + '\n' \
                f'model: {self.model}, marka: {self.marka}, rok produkcji: {self.rok_produkcji} rok,\n' \
                f'przebieg: {self.przebieg} km., pojemność: {self.pojemnosc} l., moc: {self.moc} KM., paliwo: {self.rodzaj_paliwa}'
+
 
 class OloszenieMieszkaniowe(Advertisement):
     def __init__(self, title, description, price, seller: ContactDetails, rodzaj_domu, miejscowosc, metraz, liczba_pokoi):
@@ -55,11 +57,10 @@ class OloszenieMieszkaniowe(Advertisement):
         self.liczba_pokoi = liczba_pokoi
 
     def __str__(self):
-        return f'Tytuł ogłoszenia: {self.title}\n' \
-               f'Opis ogłoszenia: {self.description}\n' \
-               f'Cena: {self.price} zł.\n' \
+        return super().__str__() + '\n' \
                f'Rodzaj domu: {self.rodzaj_domu}, metraz: {self.metraz} m^2, liczba pokoi: {self.liczba_pokoi}\n' \
                f'Miejscowość: {self.miejscowosc}.'
+
 
 c = ContactDetails('Karol', '111222333', 'k@gmail.com')
 o = OgloszenieSamochodowe('Ogloszenie', 'aaaaaa bbbbbb ccc ddddddddd,', 4500, c, 'Focus', 'Ford', 2005, 199000, 1.8, 115, 'Diesel')
