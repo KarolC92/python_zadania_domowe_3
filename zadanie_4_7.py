@@ -46,7 +46,26 @@ class OgloszenieSamochodowe(Advertisement):
                f'model: {self.model}, marka: {self.marka}, rok produkcji: {self.rok_produkcji} rok,\n' \
                f'przebieg: {self.przebieg} km., pojemność: {self.pojemnosc} l., moc: {self.moc} KM., paliwo: {self.rodzaj_paliwa}'
 
+class OloszenieMieszkaniowe(Advertisement):
+    def __init__(self, title, description, price, seller: ContactDetails, rodzaj_domu, miejscowosc, metraz, liczba_pokoi):
+        super().__init__(title, description, price, seller)
+        self.rodzaj_domu = rodzaj_domu
+        self.miejscowosc = miejscowosc
+        self.metraz = metraz
+        self.liczba_pokoi = liczba_pokoi
+
+    def __str__(self):
+        return f'Tytuł ogłoszenia: {self.title}\n' \
+               f'Opis ogłoszenia: {self.description}\n' \
+               f'Cena: {self.price} zł.\n' \
+               f'Rodzaj domu: {self.rodzaj_domu}, metraz: {self.metraz} m^2, liczba pokoi: {self.liczba_pokoi}\n' \
+               f'Miejscowość: {self.miejscowosc}.'
+
 c = ContactDetails('Karol', '111222333', 'k@gmail.com')
-a = Advertisement('Ogloszenie', 'aaaaa bbbbbb ccccc bdddddd', 4500, c)
 o = OgloszenieSamochodowe('Ogloszenie', 'aaaaaa bbbbbb ccc ddddddddd,', 4500, c, 'Focus', 'Ford', 2005, 199000, 1.8, 115, 'Diesel')
-print(o)
+om = OloszenieMieszkaniowe('Ogłoszenie', 'dom na sprzedaż w atrakcyjnej okolicy', 430000, c, 'dom', 'Podgórze', 140, 14)
+print(om)
+
+
+
+
