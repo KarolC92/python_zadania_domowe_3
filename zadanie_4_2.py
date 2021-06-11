@@ -27,7 +27,7 @@ class Advertisement:
 
     def __str__(self):
         return f'Title: {self.title}\n' \
-               f'Description: {self.description}\n' \
+               f'Description: {self.description[:10]}\n' \
                f'Price: {self.price}\n' \
                f'Seller: {self.seller}'
 
@@ -44,15 +44,15 @@ names = ['Karol', 'Konrad', 'Janusz', 'Mariusz', 'Jakub']
 phone_numbers = ['111222333', '222333444', '333444555', '444555666', '555666777']
 mails = ['ka@gmail.com', 'ko@gmail.com', 'ja@gmail.com', 'ma@gmail.com', 'jak@gmail.com']
 
-descriptions = ['Jeden powiedział to i było dobrze',
-                'Drugi powiedział inaczej i nie było źle',
-                'Trzeci nic nie powiedział i było dziwnie',
-                'Czwarty nie skomentował i się zaczęło',
-                'Piąty krzyknął i było po zawodach']
+descriptions = ['aaaaaaaa aaaaaaaa aaaaaaaa aaaaaaaaa',
+                'bbbbbbbb bbbbbbbb bbbbbbbb bbbbbbbbb',
+                'cccccccc cccccccc cccccccc ccccccccc',
+                'dddddddd dddddddd dddddddd ddddddddd',
+                'eeeeeeee eeeeeeee eeeeeeee eeeeeeeee']
 
-titles = ['Sprzedam opla',
+titles = ['Sprzedam Opla',
           'Sprzedam Forda',
-          'Sprzedam skode',
+          'Sprzedam Skode',
           'Sprzedam Fiata',
           'Sprzedam Tico']
 
