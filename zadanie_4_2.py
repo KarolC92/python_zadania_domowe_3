@@ -35,6 +35,7 @@ class Advertisement:
 def price_filter(min_price, max_price, list_advert):
     return list(filter(lambda x: min_price <= x.price <= max_price, list_advert))
 
+
 def phone_filter(phone_numbers: str, list_advert):
     return list(filter(lambda x: x.seller.tel == phone_numbers, list_advert))
 
